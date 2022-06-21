@@ -24,7 +24,7 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Center(
         child: Text(
-          'You have pushed the button this many times:',
+          'shop',
         ),
       ),
     );
