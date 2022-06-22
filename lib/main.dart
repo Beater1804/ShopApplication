@@ -9,8 +9,9 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => ProductsProvider(),
+    return ChangeNotifierProvider.value(
+      value: ProductsProvider(),
+      // create: (_) => ProductsProvider(),
       child: MaterialApp(
         title: 'My Shop',
         theme: ThemeData(
