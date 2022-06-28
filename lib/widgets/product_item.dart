@@ -53,6 +53,17 @@ class ProductItem extends StatelessWidget {
             icon: Icon(Icons.shopping_cart),
             onPressed: () {
               cart.addItem(product.id, product.price, product.title);
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text('Sản phẩm được thêm vào giỏ hàng'),
+                duration: Duration(seconds: 2),
+                action: SnackBarAction(
+                  label: 'Hoàn tác',
+                  onPressed: () {
+                    cart.removeSingleItem(product.id);
+                  },
+                ),
+              ));
             },
           ),
         ),
