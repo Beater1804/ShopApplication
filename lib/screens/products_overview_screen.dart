@@ -24,7 +24,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'My Shop',
+          'Tech Shop',
           style: TextStyle(
             color: Colors.white,
           ),
@@ -43,11 +43,11 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
             icon: Icon(Icons.more_vert),
             itemBuilder: (_) => [
               PopupMenuItem(
-                child: Text('Only Favorite'),
+                child: Text('Yêu thích'),
                 value: FilterOptions.Favorites,
               ),
               PopupMenuItem(
-                child: Text('Show All'),
+                child: Text('Toàn bộ'),
                 value: FilterOptions.All,
               ),
             ],

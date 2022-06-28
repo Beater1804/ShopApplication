@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       ],
       // create: (_) => ProductsProvider(),
       child: MaterialApp(
-        title: 'My Shop',
+        title: 'My shop',
         theme: ThemeData(
           primarySwatch: Colors.lightBlue,
           accentColor: Colors.redAccent,

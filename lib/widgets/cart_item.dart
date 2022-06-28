@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import 'package:flutter_format_money_vietnam/flutter_format_money_vietnam.dart';
 import '../providers/cart.dart';
 
 class CartItem extends StatelessWidget {
@@ -59,7 +59,8 @@ class CartItem extends StatelessWidget {
               ),
             ),
             title: Text(title),
-            subtitle: Text('Total: ${(price * quantity)}'),
+            subtitle:
+                Text('Tổng: ${(price * quantity).toInt().toString().toVND()}'),
             trailing: Text('x $quantity'),
           ),
         ),

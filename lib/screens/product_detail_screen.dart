@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/products_provider.dart';
+import 'package:flutter_format_money_vietnam/flutter_format_money_vietnam.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   // final String title;
@@ -36,7 +37,7 @@ class ProductDetailScreen extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Text(
-              loadProduct.price.toString(),
+              loadProduct.price.toInt().toString().toVND(),
               style: TextStyle(
                 color: Colors.grey,
                 fontSize: 20,

@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../providers/cart.dart' show Cart;
 import '../widgets/cart_item.dart';
 import '../providers/orders.dart';
+import 'package:flutter_format_money_vietnam/flutter_format_money_vietnam.dart';
 
 class CartScreen extends StatelessWidget {
   static const routeName = '/cart';
@@ -14,7 +15,7 @@ class CartScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Your Cart',
+          'Giỏ hàng',
           style: TextStyle(
             color: Colors.white,
           ),
@@ -30,20 +31,20 @@ class CartScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    'Total',
-                    style: TextStyle(fontSize: 20),
+                    'Tổng thanh toán',
+                    style: TextStyle(fontSize: 12),
                   ),
                   Spacer(),
                   Chip(
                     label: Text(
-                      cart.totalAmount.toString(),
+                      cart.totalAmount.toInt().toString().toVND(),
                       style: TextStyle(color: Colors.white),
                     ),
                     backgroundColor: Theme.of(context).primaryColor,
                   ),
                   FlatButton(
                     textColor: Theme.of(context).primaryColor,
-                    child: Text('Order Now'),
+                    child: Text('Mua hàng'),
                     onPressed: () {
                       Provider.of<Orders>(context, listen: false).addOrder(
                         cart.items.values.toList(),

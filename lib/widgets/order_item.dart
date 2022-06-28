@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../providers/orders.dart' as ord;
+import 'package:flutter_format_money_vietnam/flutter_format_money_vietnam.dart';
 
 class OrderItem extends StatefulWidget {
   final ord.OrderItem order;
@@ -22,9 +23,9 @@ class _OrderItemState extends State<OrderItem> {
       child: Column(
         children: <Widget>[
           ListTile(
-            title: Text(widget.order.amount.toString()),
-            subtitle: Text(
-                DateFormat('dd/MM/yyyy hh:mm').format(widget.order.dateTime)),
+            title: Text(widget.order.amount.toInt().toString().toVND()),
+            subtitle: Text(DateFormat('HH:mm:ss dd/MM/yyyy')
+                .format(widget.order.dateTime)),
             trailing: IconButton(
               icon: Icon(_expanded ? Icons.expand_less : Icons.expand_more),
               onPressed: () {
@@ -50,14 +51,14 @@ class _OrderItemState extends State<OrderItem> {
                           Text(
                             prod.title,
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           Text(
-                            '${prod.quantity} x ${prod.price}',
+                            '${prod.quantity} x ${prod.price.toInt().toString().toVND()}',
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 14,
                               color: Colors.grey,
                             ),
                           )

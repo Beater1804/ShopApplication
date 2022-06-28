@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import './cart.dart';
+import 'package:flutter_format_money_vietnam/flutter_format_money_vietnam.dart';
 
 class OrderItem {
   final String id;
