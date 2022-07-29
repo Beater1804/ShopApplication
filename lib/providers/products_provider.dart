@@ -122,7 +122,7 @@ class ProductsProvider with ChangeNotifier {
     final response = await http.delete(Uri.parse(url));
     if (response.statusCode >= 400) {
       //backup the old product if error
-      _items.insert(existingProductIndex, existingProduct!);
+      _items.insert(existingProductIndex, existingProduct);
       notifyListeners();
       throw HttpException('Could not delete product');
     }
