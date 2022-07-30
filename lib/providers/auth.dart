@@ -6,19 +6,26 @@ import 'package:http/http.dart' as http;
 import '../models/http_exception.dart';
 
 class Auth with ChangeNotifier {
-  String? _token;
-  DateTime? _expiryDate;
-  String? _userId;
+  late String _token = '';
+  late DateTime _expiryDate = DateTime.now();
+  late String _userId = '';
 
   //check Authentication for display in ProductOverview or AuthScreen
   bool get isAuth {
-    if (_token != null &&
-        _userId != null &&
-        _expiryDate != null &&
-        _expiryDate!.isAfter(DateTime.now())) {
-      return true;
+    return token.isNotEmpty;
+  }
+
+  String get userId {
+    return _userId;
+  }
+
+  String get token {
+    if (_expiryDate.toString().isNotEmpty &&
+        _expiryDate.isAfter(DateTime.now()) &&
+        _token.isNotEmpty) {
+      return _token;
     } else {
-      return false;
+      return '';
     }
   }
 
