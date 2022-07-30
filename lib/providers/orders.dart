@@ -25,6 +25,7 @@ class Orders with ChangeNotifier {
     return [..._orders];
   }
 
+  // get the order to UI
   Future<void> fetchAndSetOrders() async {
     const url =
         'https://shopappflutter-2de3c-default-rtdb.asia-southeast1.firebasedatabase.app/orders.json';
@@ -58,6 +59,7 @@ class Orders with ChangeNotifier {
     notifyListeners();
   }
 
+  //post the order into firebase
   Future<void> addOrder(List<CartItem> cartProducts, double total) async {
     const url =
         'https://shopappflutter-2de3c-default-rtdb.asia-southeast1.firebasedatabase.app/orders.json';
