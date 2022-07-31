@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_application/screens/auth_screen.dart';
+import '../screens/products_overview_screen.dart';
+
 import '../screens/orders_screen.dart';
 import '../screens/user_products_screen.dart';
+import '../providers/auth.dart';
 
 class AppDrawer extends StatelessWidget {
   @override
@@ -17,7 +22,8 @@ class AppDrawer extends StatelessWidget {
             leading: Icon(Icons.shop),
             title: Text('Trang chủ'),
             onTap: () {
-              Navigator.of(context).pushReplacementNamed('/');
+              Navigator.of(context)
+                  .pushReplacementNamed(ProductsOverviewScreen.routeName);
             },
           ),
           Divider(),
@@ -36,6 +42,25 @@ class AppDrawer extends StatelessWidget {
             onTap: () {
               Navigator.of(context)
                   .pushReplacementNamed(UserProductsScreen.routeName);
+            },
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.exit_to_app),
+            title: Text('Đăng xuất'),
+            onTap: () {
+              // Navigator.of(context).pop();
+
+              // // Navigator.of(context).pushReplacementNamed(AuthScreen.routeName);
+              // Provider.of<Auth>(context, listen: false).logout().then((_) =>
+              //     Navigator.of(context).popAndPushNamed(AuthScreen.routeName));
+
+              Navigator.of(context).pop();
+              Navigator.of(context).pushReplacementNamed('/');
+
+              // Navigator.of(context)
+              //     .pushReplacementNamed(UserProductsScreen.routeName);
+              Provider.of<Auth>(context, listen: false).logout();
             },
           ),
         ],

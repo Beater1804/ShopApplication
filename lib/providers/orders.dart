@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'package:shop_application/models/http_exception.dart';
 import './cart.dart';
 import 'package:flutter_format_money_vietnam/flutter_format_money_vietnam.dart';
 
@@ -32,14 +33,16 @@ class Orders with ChangeNotifier {
   // get the order to UI
   Future<void> fetchAndSetOrders() async {
     final url =
-        'https://shopappflutter-2de3c-default-rtdb.asia-southeast1.firebasedatabase.app/orders.json?auth=$authToken';
+        'https://shopappflutter-2de3c-default-rtdb.asia-southeast1.firebasedatabase.app/orders/$userId.json?auth=$authToken';
+
     final response = await http.get(Uri.parse(url));
 
-    final extractedData = json.decode(response.body) as Map<String, dynamic>;
-    final List<OrderItem> loadedOrders = [];
+    final extractedData = json.decode(response.body) as Map<String, dynamic>?;
     if (extractedData == null) {
       return;
     }
+    final List<OrderItem> loadedOrders = [];
+
     extractedData.forEach((orderId, orderData) {
       loadedOrders.add(
         OrderItem(
@@ -66,7 +69,7 @@ class Orders with ChangeNotifier {
   //post the order into firebase
   Future<void> addOrder(List<CartItem> cartProducts, double total) async {
     final url =
-        'https://shopappflutter-2de3c-default-rtdb.asia-southeast1.firebasedatabase.app/orders.json?auth=$authToken';
+        'https://shopappflutter-2de3c-default-rtdb.asia-southeast1.firebasedatabase.app/orders/$userId.json?auth=$authToken';
     final timestamp = DateTime.now();
     final response = await http.post(Uri.parse(url),
         body: json.encode({
